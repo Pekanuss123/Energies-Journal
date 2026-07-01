@@ -103,47 +103,11 @@ pip install -r requirements.txt
 jupyter notebook Analysis.ipynb
 ```
 
-Run cells in order.  Section-by-section guide:
-
-| Section | Action | Est. runtime |
-|---|---|---|
-| 1 — Environment setup | Imports only | < 1 s |
-| 2 — Configuration | Set paths/params | < 1 s |
-| 3 — Data loading | Merges raw CSVs; writes `combined_datasets/` | < 1 min |
-| 4 — Preprocessing | StandardScaler + sliding windows | < 1 min |
-| 5 — Multi-step forecast | 3 strategies × all prosumers, grid-search | **2–6 h** on CPU |
-| 5b — Conference baselines | 5 single-step models × all prosumers | 30–60 min |
-| 5c — Training-size sweep | §5.1 Figure 3 | 30–60 min |
-| 5d — Aggregation scenarios | §5.2 Figure 4 | 15–30 min |
-| 5e — Auto-correlation | §5.3 Figure 5 | < 1 min |
-| 5f — Feature correlation | §5.4 Figure 6 | < 1 min |
-| 5g — Persistence baseline | Table 4 benchmark | < 1 min |
-| 6 — Evaluation metrics | Per-step MAE/sMAPE/MQL_Σ/PICP/CFE/MPIR | < 1 min |
-| 7 — Visualisation | Reproduces paper error plots | < 1 min |
-
-> **Tip:** Sections 5e, 5f, 6, and 7 can be run independently of the long
-> training sections if you already have result CSVs in `Results/`.
-
 ### GPU acceleration
 
 LightGBM and CatBoost both support GPU training.  To enable it, change
 `device='cpu'` → `device='gpu'` in `Helper_Functions/models.py` and
 `Helper_Functions/models_conference.py`.
-
----
-
-## Reproducing specific paper tables and figures
-
-| Paper element | Notebook section |
-|---|---|
-| Figure 3 — MQL_Σ vs training size | 5c |
-| Figure 4 — Aggregation scenarios | 5d |
-| Figure 5 — Auto-correlation | 5e |
-| Figure 6 — Feature-target correlation | 5f |
-| Table 3 — Single-step model comparison | 5b (output: `Results/Conference/table3_reproduction.csv`) |
-| Table 4 — Persistence baseline | 5g (output: `Results/persistence_baseline_summary.csv`) |
-| Table 5 — Multi-step model comparison | 6 (output: `Results/Metrics/summary_table.csv`) |
-| Figures 7–8 — MAE/MPIR error plots | Pre-generated PNGs in `Images/`; regenerate via Section 7 |
 
 ---
 
