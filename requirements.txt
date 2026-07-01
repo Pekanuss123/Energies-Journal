@@ -1,0 +1,17 @@
+# ── Core scientific stack ──────────────────────────────────────────────────
+numpy>=2.0,<3.0
+pandas>=2.2,<4.0
+scipy>=1.13
+scikit-learn>=1.4
+
+# ── Gradient boosting ─────────────────────────────────────────────────────
+lightgbm>=4.3
+catboost>=1.2
+
+# ── Visualisation ─────────────────────────────────────────────────────────
+matplotlib>=3.8
+seaborn>=0.13
+
+# ── Notebook interface ────────────────────────────────────────────────────
+jupyter>=1.0
+ipykernel>=6.0
